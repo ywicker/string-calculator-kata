@@ -60,5 +60,14 @@ public class AddTest {
 
         Assertions.assertThat(value).isEqualTo(2);
     }
+    @Test
+    @DisplayName("A string with two negative numbers must return the sum of those")
+    void aStringWithTwoNegativeNumbersMustReturnTheSumOfThose () {
+        var stringCalculator = new StringCalculator();
+
+        int value = stringCalculator.add("-1,-1");
+
+        Assertions.assertThat(value).isEqualTo(-2);
+    }
 
 }
