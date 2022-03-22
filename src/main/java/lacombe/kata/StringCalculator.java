@@ -5,6 +5,7 @@ public class StringCalculator {
         if(numbers.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(numbers);
+        var stringValues = numbers.split(",");
+        return Integer.parseInt(stringValues[0]);
     }
 }
