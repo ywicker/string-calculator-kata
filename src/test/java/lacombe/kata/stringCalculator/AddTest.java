@@ -51,5 +51,14 @@ public class AddTest {
 
         Assertions.assertThat(value).isEqualTo(1);
     }
+    @Test
+    @DisplayName("A string with two positive numbers must return the sum of those")
+    void aStringWithTwoPositiveNumbersMustReturnTheSumOfThose () {
+        var stringCalculator = new StringCalculator();
+
+        int value = stringCalculator.add("1,1");
+
+        Assertions.assertThat(value).isEqualTo(2);
+    }
 
 }
