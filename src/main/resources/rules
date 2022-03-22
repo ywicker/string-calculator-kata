@@ -5,4 +5,5 @@ Step 1
 - a string with a positive number and zero must return the positive number
 - a string with zero and a positive number must return the positive number
 - a string with two positive numbers must return the sum of those
+- a string with two negative numbers must return the sum of those
 - a string other than a number or a comma raises an exception
