@@ -2,7 +2,7 @@ Step 1
 - an empty string must return 0
 - a string with zero must return 0
 - a string with a single positive number must return that number
-- a string with a positive number and 0 must return the positive number
-- a string with 0 and a positive number must return the positive number
+- a string with a positive number and zero must return the positive number
+- a string with zero and a positive number must return the positive number
 - a string with two positive numbers must return the sum of those
 - a string other than a number or a comma raises an exception

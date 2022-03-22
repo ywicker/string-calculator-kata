@@ -42,5 +42,14 @@ public class AddTest {
 
         Assertions.assertThat(value).isEqualTo(1);
     }
+    @Test
+    @DisplayName("A string with zero and a positive number must return the positive number")
+    void aStringWithZeroAndAPositiveNumberMustReturnThePositiveNumber () {
+        var stringCalculator = new StringCalculator();
+
+        int value = stringCalculator.add("0,1");
+
+        Assertions.assertThat(value).isEqualTo(1);
+    }
 
 }
