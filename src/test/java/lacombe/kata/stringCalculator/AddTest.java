@@ -22,5 +22,13 @@ public class AddTest {
 
         Assertions.assertThat(value).isEqualTo(0);
     }
+    @Test
+    void aStringWithASinglePositiveNumberMustReturnThatNumber () {
+        var stringCalculator = new StringCalculator();
+
+        int value = stringCalculator.add("1");
+
+        Assertions.assertThat(value).isEqualTo(1);
+    }
 
 }
