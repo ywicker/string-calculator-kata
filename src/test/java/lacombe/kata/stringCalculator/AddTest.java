@@ -13,4 +13,14 @@ public class AddTest {
 
         Assertions.assertThat(value).isEqualTo(0);
     }
+
+    @Test
+    void aStringWithZeroMustReturn0 () {
+        var stringCalculator = new StringCalculator();
+
+        int value = stringCalculator.add("0");
+
+        Assertions.assertThat(value).isEqualTo(0);
+    }
+
 }
