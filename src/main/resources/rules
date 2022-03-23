@@ -7,3 +7,8 @@ Step 1
 - a string with two positive numbers must return the sum of those
 - a string with two negative numbers must return the sum of those
 - a string other than a number or a comma raises an exception
+
+Step 2
+- a string with multiple positive numbers must return the sum of those
+- a string with multiple positive and negative numbers must return the sum of those
+
