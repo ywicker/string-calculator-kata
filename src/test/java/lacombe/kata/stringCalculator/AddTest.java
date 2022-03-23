@@ -126,5 +126,12 @@ public class AddTest {
         assertThatThrownBy(() -> stringCalculator.add("//;\n1,1"))
                 .isInstanceOf(IsOtherThanANumberException.class);
     }
+    @Test
+    @DisplayName("A string with a change of separator and multiple positive numbers separated by the separator and a newline must return the sum of those")
+    void aStringWithAChangeOfSeparatorAndMultiplePositiveNumbersSeparatedByTheSeparatorAndANewlineMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+        int value = stringCalculator.add("//;\n1;2\n3;4\n5");
+
+        assertThat(value).isEqualTo(15);
+    }
 
 }
