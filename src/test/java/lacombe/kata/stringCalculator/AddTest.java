@@ -52,15 +52,15 @@ public class AddTest {
         assertThat(value).isEqualTo(1);
     }
     @Test
-    @DisplayName("A string with two positive numbers must return the sum of those")
-    void aStringWithTwoPositiveNumbersMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+    @DisplayName("A string with two positive numbers separated by a comma must return the sum of those")
+    void aStringWithTwoPositiveNumbersSeparatedByACommaMustReturnTheSumOfThose () throws IsOtherThanANumberException {
         int value = stringCalculator.add("1,1");
 
         assertThat(value).isEqualTo(2);
     }
     @Test
-    @DisplayName("A string with two negative numbers must return the sum of those")
-    void aStringWithTwoNegativeNumbersMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+    @DisplayName("A string with two negative numbers separated by a comma must return the sum of those")
+    void aStringWithTwoNegativeNumbersSeparatedByACommaMustReturnTheSumOfThose () throws IsOtherThanANumberException {
         int value = stringCalculator.add("-1,-1");
 
         assertThat(value).isEqualTo(-2);
@@ -72,15 +72,15 @@ public class AddTest {
                 .isInstanceOf(IsOtherThanANumberException.class);
     }
     @Test
-    @DisplayName("A string with multiple positive numbers must return the sum of those")
-    void aStringWithMultiplePositiveNumbersMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+    @DisplayName("A string with multiple positive numbers separated by a comma must return the sum of those")
+    void aStringWithMultiplePositiveNumbersSeparatedByACommaMustReturnTheSumOfThose () throws IsOtherThanANumberException {
         int value = stringCalculator.add("1,2,3,4,5");
 
         assertThat(value).isEqualTo(15);
     }
     @Test
-    @DisplayName("A string with multiple positive and negative numbers must return the sum of those")
-    void aStringWithMultiplePositiveAndNegativeNumbersMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+    @DisplayName("A string with multiple positive and negative numbers separated by a comma must return the sum of those")
+    void aStringWithMultiplePositiveAndNegativeNumbersSeparatedByACommaMustReturnTheSumOfThose () throws IsOtherThanANumberException {
         int value = stringCalculator.add("-1,2,-3,4,-5");
 
         assertThat(value).isEqualTo(-3);
