@@ -30,4 +30,5 @@ Step 4
 - a string with a change of separator and two positive numbers separated by the separator must return the sum of those
 - a string with a change of separator and two positive numbers separated by the default separator raises an exception
 - a string with a change of separator and multiple positive numbers separated by the separator and a newline must return the sum of those
+- a string with a change of separator for an empty and two positive numbers separated by a newline must return the sum of those
 

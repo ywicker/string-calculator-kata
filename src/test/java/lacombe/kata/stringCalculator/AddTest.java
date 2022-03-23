@@ -133,4 +133,12 @@ public class AddTest {
 
         assertThat(value).isEqualTo(15);
     }
+    @Test
+    @DisplayName("A string with a change of separator for an empty and two positive numbers separated by a newline must return the sum of those")
+    void aStringWithAChangeOfSeparatorForAnEmptyAndTwoPositiveNumbersSeparatedByANewlineMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+        int value = stringCalculator.add("//\n1\n1");
+
+        assertThat(value).isEqualTo(2);
+    }
+
 }
