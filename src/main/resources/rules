@@ -19,4 +19,15 @@ Step 3
     -> dans ce cas on prend en compte deux valeurs vident suplementaires qui ne seront pas ajoutees au calcul
         Exemple : “1,\n” donne un tableau de string ["1","",""] qui donne la somme (et le resultat) suivante : 1
 
+Step 4
+- Note : Afin de traiter ce nouveau point tout en conservant les scenarios existant intacte, nous allons :
+    - considerer le retour a la ligne comme un separateur fix
+    - considerer la virgule comme le separateur par defaut et modifiable au besoin
+    - le nouveau separateur ne sera valide que pour le calcul demande
+    - on acceptera tout type de separateur, meme les chiffres
+- a string with a change of separator and a single positive number must return that number
+- a string with a change of separator and two positive numbers separated by a newline must return the sum of those
+- a string with a change of separator and two positive numbers separated by the separator must return the sum of those
+- a string with a change of separator and two positive numbers separated by the default separator raises an exception
+- a string with a change of separator and multiple positive numbers separated by the separator and a newline must return the sum of those
 
