@@ -133,11 +133,4 @@ public class AddTest {
 
         assertThat(value).isEqualTo(15);
     }
-    @Test
-    @DisplayName("A string with a change of separator for an empty value raises an exception")
-    void aStringWithAChangeOfSeparatorForAnEmptyValueRaisesAnException () {
-        assertThatThrownBy(() -> stringCalculator.add("//\n1,1"))
-                .isInstanceOf(IsOtherThanANumberException.class);
-    }
-
 }
