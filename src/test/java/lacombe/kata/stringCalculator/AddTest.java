@@ -99,5 +99,12 @@ public class AddTest {
 
         assertThat(value).isEqualTo(6);
     }
+    @Test
+    @DisplayName("A string with a change of separator and a single positive number must return that number")
+    void aStringWithAChangeOfSeparatorAndASinglePositiveNumberMustReturnThatNumber () throws IsOtherThanANumberException {
+        int value = stringCalculator.add("//;\n1");
+
+        assertThat(value).isEqualTo(1);
+    }
 
 }

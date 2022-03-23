@@ -6,6 +6,9 @@ import java.util.Arrays;
 
 public record StringNumbers (String[] stringValues) {
     public static StringNumbers buildStringNumbers(String numbers) {
+        if(numbers.startsWith("//") && numbers.contains( "\n")) {
+            numbers = numbers.substring(numbers.indexOf("\n")+1);
+        }
         var stringSplitValues = numbers.split("[\n,]");
 
         return new StringNumbers(stringSplitValues);
