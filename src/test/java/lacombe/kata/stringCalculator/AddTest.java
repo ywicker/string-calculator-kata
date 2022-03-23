@@ -120,5 +120,11 @@ public class AddTest {
 
         assertThat(value).isEqualTo(2);
     }
+    @Test
+    @DisplayName("A string with a change of separator and two positive numbers separated by the default separator raises an exception")
+    void aStringWithAChangeOfSeparatorAndTwoPositiveNumbersSeparatedByTheDefaultSeparatorRaisesAnException () {
+        assertThatThrownBy(() -> stringCalculator.add("//;\n1,1"))
+                .isInstanceOf(IsOtherThanANumberException.class);
+    }
 
 }
