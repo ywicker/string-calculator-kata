@@ -88,5 +88,14 @@ public class AddTest {
 
         assertThat(value).isEqualTo(15);
     }
+    @Test
+    @DisplayName("A string with multiple positive and negative numbers must return the sum of those")
+    void aStringWithMultiplePositiveAndNegativeNumbersMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+        var stringCalculator = new StringCalculator();
+
+        int value = stringCalculator.add("-1,2,-3,4,-5");
+
+        assertThat(value).isEqualTo(-3);
+    }
 
 }
