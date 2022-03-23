@@ -85,5 +85,12 @@ public class AddTest {
 
         assertThat(value).isEqualTo(-3);
     }
+    @Test
+    @DisplayName("A string with two positive numbers separated by a newline must return the sum of those")
+    void aStringWithTwoPositiveNumbersSeparatedByANewlineMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+        int value = stringCalculator.add("1\n1");
+
+        assertThat(value).isEqualTo(2);
+    }
 
 }

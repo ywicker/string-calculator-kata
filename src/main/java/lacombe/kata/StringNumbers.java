@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public record StringNumbers (String[] stringValues) {
     public static StringNumbers buildStringNumbers(String numbers) {
-        var stringSplitValues = numbers.split(",");
+        var stringSplitValues = numbers.split("[\n,]");
 
         return new StringNumbers(stringSplitValues);
     }
