@@ -79,5 +79,14 @@ public class AddTest {
         assertThatThrownBy(() -> stringCalculator.add("0,a"))
                 .isInstanceOf(IsOtherThanANumberException.class);
     }
+    @Test
+    @DisplayName("A string with multiple positive numbers must return the sum of those")
+    void aStringWithMultiplePositiveNumbersMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+        var stringCalculator = new StringCalculator();
+
+        int value = stringCalculator.add("1,2,3,4,5");
+
+        assertThat(value).isEqualTo(15);
+    }
 
 }
