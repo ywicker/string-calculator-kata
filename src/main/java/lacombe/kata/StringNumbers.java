@@ -5,13 +5,16 @@ import lacombe.kata.errors.IsOtherThanANumberException;
 import java.util.Arrays;
 
 public record StringNumbers (String[] stringValues) {
+    private static final String DEFAULT_SEPARATOR = ",";
+    private static final String NEWLINE_SEPARATOR = "\n";
+
     public static StringNumbers buildStringNumbers(String numbers) {
-        String separator = ",";
-        if(numbers.startsWith("//") && numbers.contains( "\n")) {
-            separator = numbers.substring(2, numbers.indexOf("\n"));
-            numbers = numbers.substring(numbers.indexOf("\n")+1);
+        String separator = DEFAULT_SEPARATOR;
+        if(numbers.startsWith("//") && numbers.contains(NEWLINE_SEPARATOR)) {
+            separator = numbers.substring(2, numbers.indexOf(NEWLINE_SEPARATOR));
+            numbers = numbers.substring(numbers.indexOf(NEWLINE_SEPARATOR)+1);
         }
-        var stringSplitValues = numbers.split("[\n"+separator+"]");
+        var stringSplitValues = numbers.split("["+NEWLINE_SEPARATOR+separator+"]");
 
         return new StringNumbers(stringSplitValues);
     }
