@@ -106,5 +106,12 @@ public class AddTest {
 
         assertThat(value).isEqualTo(1);
     }
+    @Test
+    @DisplayName("A string with a change of separator and two positive numbers separated by a newline must return the sum of those")
+    void aStringWithAChangeOfSeparatorAndTwoPositiveNumbersSeparatedByANewlineMustReturnTheSumOfThose () throws IsOtherThanANumberException {
+        int value = stringCalculator.add("//;\n1\n1");
+
+        assertThat(value).isEqualTo(2);
+    }
 
 }
