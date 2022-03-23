@@ -72,8 +72,8 @@ public class AddTest {
         assertThat(value).isEqualTo(-2);
     }
     @Test
-    @DisplayName("A string other than a number or a comma raises an exception")
-    void aStringOtherThanANumberOrACommaRaisesAnException (){
+    @DisplayName("A string other than a number raises an exception")
+    void aStringOtherThanANumberRaisesAnException (){
         var stringCalculator = new StringCalculator();
 
         assertThatThrownBy(() -> stringCalculator.add("0,a"))
