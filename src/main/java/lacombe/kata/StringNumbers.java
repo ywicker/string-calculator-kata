@@ -6,10 +6,12 @@ import java.util.Arrays;
 
 public record StringNumbers (String[] stringValues) {
     public static StringNumbers buildStringNumbers(String numbers) {
+        String separator = ",";
         if(numbers.startsWith("//") && numbers.contains( "\n")) {
+            separator = numbers.substring(2, numbers.indexOf("\n"));
             numbers = numbers.substring(numbers.indexOf("\n")+1);
         }
-        var stringSplitValues = numbers.split("[\n,]");
+        var stringSplitValues = numbers.split("[\n"+separator+"]");
 
         return new StringNumbers(stringSplitValues);
     }
