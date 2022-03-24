@@ -140,5 +140,12 @@ public class AddTest {
 
         assertThat(value).isEqualTo(2);
     }
+    @Test
+    @DisplayName("A string with a change of separator containing 2 characters and two positive numbers separated by the separator must return the sum of those")
+    void aStringWithAChangeOfSeparatorContaining2CharactersAndTwoPositiveNumbersSeparatedByTheSeparatorMustReturnTheSumOfThose() throws IsOtherThanANumberException {
+        int value = stringCalculator.add("//sp\n1sp1");
+
+        assertThat(value).isEqualTo(2);
+    }
 
 }
