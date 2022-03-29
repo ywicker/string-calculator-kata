@@ -33,3 +33,6 @@ Step 4
 - a string with a change of separator for an empty and two positive numbers separated by a newline must return the sum of those
 - a string with a change of separator containing 2 characters and two positive numbers separated by the separator must return the sum of those
 
+Step 5
+- a string with a negative number raises an exception
+- a string with multiple negative numbers raises an exception
