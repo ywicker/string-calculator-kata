@@ -4,7 +4,6 @@ import lacombe.kata.errors.IsOtherThanANumberException;
 import lacombe.kata.StringCalculator;
 import lacombe.kata.errors.UnauthorizedNegativesException;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -18,134 +17,218 @@ public class AddTest {
     }
 
     @Test
-    @DisplayName("An empty string must return 0")
-    void anEmptyStringMustReturn0 () throws Exception {
-        int value = stringCalculator.add("");
+    void empty_string_should_return_0() throws Exception {
+        String input = "";
 
-        assertThat(value).isEqualTo(0);
-    }
-    @Test
-    @DisplayName("A string with zero must return 0")
-    void aStringWithZeroMustReturn0 () throws Exception {
-        int value = stringCalculator.add("0");
+        int value = stringCalculator.add(input);
 
-        assertThat(value).isEqualTo(0);
+        assertThat(value).isZero();
     }
-    @Test
-    @DisplayName("A string with a single positive number must return that number")
-    void aStringWithASinglePositiveNumberMustReturnThatNumber () throws Exception {
-        int value = stringCalculator.add("1");
 
-        assertThat(value).isEqualTo(1);
-    }
     @Test
-    @DisplayName("A string with a positive number and zero must return the positive number")
-    void aStringWithAPositiveNumberAndZeroMustReturnThePositiveNumber () throws Exception {
-        int value = stringCalculator.add("1,0");
+    void zero_string_should_return_0() throws Exception {
+        String input = "0";
 
-        assertThat(value).isEqualTo(1);
-    }
-    @Test
-    @DisplayName("A string with zero and a positive number must return the positive number")
-    void aStringWithZeroAndAPositiveNumberMustReturnThePositiveNumber () throws Exception {
-        int value = stringCalculator.add("0,1");
+        int value = stringCalculator.add(input);
 
-        assertThat(value).isEqualTo(1);
+        assertThat(value).isZero();
     }
-    @Test
-    @DisplayName("A string with two positive numbers separated by a comma must return the sum of those")
-    void aStringWithTwoPositiveNumbersSeparatedByACommaMustReturnTheSumOfThose () throws Exception {
-        int value = stringCalculator.add("1,1");
 
-        assertThat(value).isEqualTo(2);
-    }
     @Test
-    @DisplayName("A string other than a number raises an exception")
-    void aStringOtherThanANumberRaisesAnException (){
-        assertThatThrownBy(() -> stringCalculator.add("0,a"))
+    void single_positive_number_string_should_return_same_number() throws Exception {
+        String input = "1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 1;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void positive_number_and_zero_string_should_return_positive_number() throws Exception {
+        String input = "1,0";
+
+        int value = stringCalculator.add(input);
+
+
+        int expectedValue = 1;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void zero_and_positive_number_string_should_return_positive_number() throws Exception {
+        String input = "0,1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 1;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void two_positive_numbers_comma_delimited_should_be_summed() throws Exception {
+        String input = "1,1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 2;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void other_than_number_string_should_be_raises_exception() {
+        String input = "0,a";
+
+        assertThatThrownBy(() -> stringCalculator.add(input))
                 .isInstanceOf(IsOtherThanANumberException.class);
     }
-    @Test
-    @DisplayName("A string with multiple positive numbers separated by a comma must return the sum of those")
-    void aStringWithMultiplePositiveNumbersSeparatedByACommaMustReturnTheSumOfThose () throws Exception {
-        int value = stringCalculator.add("1,2,3,4,5");
 
-        assertThat(value).isEqualTo(15);
-    }
     @Test
-    @DisplayName("A string with two positive numbers separated by a newline must return the sum of those")
-    void aStringWithTwoPositiveNumbersSeparatedByANewlineMustReturnTheSumOfThose () throws Exception {
+    void single_positive_number_followed_by_two_default_separators_should_return_same_number() throws Exception {
+        String input = "1,\n";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 1;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void multiple_positive_numbers_comma_delimited_should_be_summed() throws Exception {
+        String input = "1,2,3,4,5";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 15;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void two_positive_numbers_newline_delimited_should_be_summed() throws Exception {
         int value = stringCalculator.add("1\n1");
 
-        assertThat(value).isEqualTo(2);
+        int expectedValue = 2;
+        assertThat(value).isEqualTo(expectedValue);
     }
-    @Test
-    @DisplayName("A string with multiple positive numbers separated by a newline must return the sum of those")
-    void aStringWithMultiplePositiveNumbersSeparatedByANewlineMustReturnTheSumOfThose () throws Exception {
-        int value = stringCalculator.add("1\n2,3");
 
-        assertThat(value).isEqualTo(6);
-    }
     @Test
-    @DisplayName("A string with a change of separator and a single positive number must return that number")
-    void aStringWithAChangeOfSeparatorAndASinglePositiveNumberMustReturnThatNumber () throws Exception {
-        int value = stringCalculator.add("//;\n1");
+    void multiple_positive_numbers_newline_delimited_should_be_summed() throws Exception {
+        String input = "1\n2\n3\n4\n5";
 
-        assertThat(value).isEqualTo(1);
-    }
-    @Test
-    @DisplayName("A string with a change of separator and two positive numbers separated by a newline must return the sum of those")
-    void aStringWithAChangeOfSeparatorAndTwoPositiveNumbersSeparatedByANewlineMustReturnTheSumOfThose () throws Exception {
-        int value = stringCalculator.add("//;\n1\n1");
+        int value = stringCalculator.add(input);
 
-        assertThat(value).isEqualTo(2);
+        int expectedValue = 15;
+        assertThat(value).isEqualTo(expectedValue);
     }
-    @Test
-    @DisplayName("A string with a change of separator and two positive numbers separated by the separator must return the sum of those")
-    void aStringWithAChangeOfSeparatorAndTwoPositiveNumbersSeparatedByTheSeparatorMustReturnTheSumOfThose () throws Exception {
-        int value = stringCalculator.add("//;\n1;1");
 
-        assertThat(value).isEqualTo(2);
-    }
     @Test
-    @DisplayName("A string with a change of separator and two positive numbers separated by the default separator raises an exception")
-    void aStringWithAChangeOfSeparatorAndTwoPositiveNumbersSeparatedByTheDefaultSeparatorRaisesAnException () {
-        assertThatThrownBy(() -> stringCalculator.add("//;\n1,1"))
+    void three_positive_numbers_delimited_in_two_default_way_should_be_summed() throws Exception {
+        String input = "1\n2,3";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 6;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void custom_separator_followed_by_positive_number_should_return_same_number() throws Exception {
+        String input = "//;\n1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 1;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void custom_separator_followed_by_two_positive_numbers_newline_delimited_should_be_summed() throws Exception {
+        String input = "//;\n1\n1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 2;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void custom_separator_followed_by_two_positive_numbers_delimited_by_new_separator_should_be_summed() throws Exception {
+        String input = "//;\n1;1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 2;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void custom_separator_followed_by_two_positive_numbers_delimited_by_default_separator_should_be_raises_exception() {
+        String input = "//;\n1,1";
+
+        assertThatThrownBy(() -> stringCalculator.add(input))
                 .isInstanceOf(IsOtherThanANumberException.class);
     }
-    @Test
-    @DisplayName("A string with a change of separator and multiple positive numbers separated by the separator and a newline must return the sum of those")
-    void aStringWithAChangeOfSeparatorAndMultiplePositiveNumbersSeparatedByTheSeparatorAndANewlineMustReturnTheSumOfThose () throws Exception {
-        int value = stringCalculator.add("//;\n1;2\n3;4\n5");
 
-        assertThat(value).isEqualTo(15);
-    }
     @Test
-    @DisplayName("A string with a change of separator for an empty and two positive numbers separated by a newline must return the sum of those")
-    void aStringWithAChangeOfSeparatorForAnEmptyAndTwoPositiveNumbersSeparatedByANewlineMustReturnTheSumOfThose () throws Exception {
-        int value = stringCalculator.add("//\n1\n1");
+    void custom_separator_followed_by_five_positive_numbers_delimited_in_two_valid_way_should_be_summed() throws Exception {
+        String input = "//;\n1;2\n3;4\n5";
 
-        assertThat(value).isEqualTo(2);
-    }
-    @Test
-    @DisplayName("A string with a change of separator containing 2 characters and two positive numbers separated by the separator must return the sum of those")
-    void aStringWithAChangeOfSeparatorContaining2CharactersAndTwoPositiveNumbersSeparatedByTheSeparatorMustReturnTheSumOfThose() throws Exception {
-        int value = stringCalculator.add("//sp\n1sp1");
+        int value = stringCalculator.add(input);
 
-        assertThat(value).isEqualTo(2);
+        int expectedValue = 15;
+        assertThat(value).isEqualTo(expectedValue);
     }
+
     @Test
-    @DisplayName("A string with a negative number raises an exception")
-    void aStringWithANegativeNumberRaisesAnException () {
-        assertThatThrownBy(() -> stringCalculator.add("-1"))
+    void custom_empty_separator_followed_by_two_positive_numbers_newline_delimited_should_be_summed() throws Exception {
+        String input = "//\n1\n1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 2;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void custom_separator_with_2_characters_followed_by_two_positive_numbers_delimited_by_new_separator_should_be_summed() throws Exception {
+        String input = "//sp\n1sp1";
+
+        int value = stringCalculator.add(input);
+
+        int expectedValue = 2;
+        assertThat(value).isEqualTo(expectedValue);
+    }
+
+    @Test
+    void positive_number_followed_by_custom_separator_should_be_raises_exception() {
+        String input = "1//;\n";
+
+        assertThatThrownBy(() -> stringCalculator.add(input))
+                .isInstanceOf(IsOtherThanANumberException.class);
+    }
+
+    @Test
+    void custom_separator_without_newline_followed_by_positive_number_should_be_raises_exception() {
+        String input = "//;1";
+
+        assertThatThrownBy(() -> stringCalculator.add(input))
+                .isInstanceOf(IsOtherThanANumberException.class);
+    }
+
+    @Test
+    void negative_number_string_should_be_raises_exception_with_negative_value() {
+        String input = "-1";
+
+        assertThatThrownBy(() -> stringCalculator.add(input))
                 .isInstanceOf(UnauthorizedNegativesException.class)
                 .hasMessage("Negatives not allowed:-1");
     }
 
     @Test
-    @DisplayName("A string with multiple negative numbers raises an exception")
-    void aStringWithMultipleNegativeNumbersRaisesAnException () {
-        assertThatThrownBy(() -> stringCalculator.add("-1,2,-3,4,-5"))
+    void multiple_negative_numbers_should_be_raises_exception_with_negative_values() {
+        String input = "-1,2,-3,4,-5";
+
+        assertThatThrownBy(() -> stringCalculator.add(input))
                 .isInstanceOf(UnauthorizedNegativesException.class)
                 .hasMessage("Negatives not allowed:-1 -3 -5");
     }
